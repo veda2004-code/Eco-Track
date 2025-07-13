@@ -1,0 +1,63 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+export default function UserRegister() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Registration failed");
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userEmail", data.email);
+
+      navigate("/dashboard");
+    } catch (err) {
+      setErrorMsg(err.message);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col justify-center items-center bg-green-50 p-6">
+      <div className="max-w-sm w-full bg-white p-6 rounded shadow-md">
+        <h1 className="text-2xl font-bold mb-4 text-green-700">User Register</h1>
+        <Input
+          type="email"
+          placeholder="Email"
+          className="mb-3"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          type="password"
+          placeholder="Password"
+          className="mb-3"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {errorMsg && <p className="text-red-600 text-sm mb-2">{errorMsg}</p>}
+        <Button onClick={handleRegister} className="w-full bg-green-600 hover:bg-green-700">
+          Register
+        </Button>
+        <p className="text-sm mt-2 text-center">
+          Already have an account?{" "}
+          <a href="/login" className="text-green-700 underline">
+            Login here
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+}
