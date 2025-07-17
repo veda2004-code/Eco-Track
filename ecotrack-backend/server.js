@@ -15,7 +15,10 @@ const adminRoutes = require("./routes/admin"); // if needed separately
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://eco-track-lemon.vercel.app", // or "*" for testing
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
