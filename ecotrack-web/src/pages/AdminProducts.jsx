@@ -16,7 +16,7 @@ export default function AdminProducts() {
     setStatus("");
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/products/admin", {
+      const res = await fetch("https://eco-track-l9dz.onrender.com", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ export default function AdminProducts() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5000/api/products/${productId}`, {
+      const res = await fetch(`https://eco-track-l9dz.onrender.com`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

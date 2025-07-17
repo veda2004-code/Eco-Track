@@ -18,7 +18,7 @@ export default function ProductScanner() {
     const fetchProducts = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/products/admin", {
+        const res = await fetch("https://eco-track-l9dz.onrender.com", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -70,7 +70,7 @@ const handleTrackImpact = async () => {
       carbonOffset: selectedProduct.carbonOffset || 0,
     };
 
-    const res = await fetch("http://localhost:5000/api/dashboard/track", {
+    const res = await fetch("https://eco-track-l9dz.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

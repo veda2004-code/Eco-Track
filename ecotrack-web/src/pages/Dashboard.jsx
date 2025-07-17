@@ -23,7 +23,7 @@ export default function Dashboard() {
     const fetchUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch("https://eco-track-l9dz.onrender.com", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -37,7 +37,7 @@ export default function Dashboard() {
 
     const fetchEmail = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/me", {
+        const res = await fetch("https://eco-track-l9dz.onrender.com", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ export default function Dashboard() {
     const fetchStats = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/dashboard/stats?scope=${scope}`,
+          `https://eco-track-l9dz.onrender.com`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export default function Dashboard() {
     const fetchTrends = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/dashboard/ecoscore-trends?scope=${scope}`,
+          `https://eco-track-l9dz.onrender.com`,
           {
             headers: {
               "Content-Type": "application/json",

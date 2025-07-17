@@ -12,7 +12,7 @@ export default function AdminRegister() {
 
   const handleRegister = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/admin/register", {
+      const res = await fetch("https://eco-track-l9dz.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
