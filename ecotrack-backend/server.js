@@ -16,7 +16,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "https://eco-track-lemon.vercel.app", // or "*" for testing
+  origin: "*", // or "*" for testing
   credentials: true
 }));
 app.use(express.json());
